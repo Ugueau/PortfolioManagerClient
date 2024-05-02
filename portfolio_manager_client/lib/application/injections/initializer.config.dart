@@ -18,6 +18,8 @@ import 'package:portfolio_manager_client/data/network/endpoints/document_list.en
     as _i4;
 import 'package:portfolio_manager_client/data/repositories/places/places.repository_impl.dart'
     as _i9;
+import 'package:portfolio_manager_client/domain/manager/document.manager.dart'
+    as _i10;
 import 'package:portfolio_manager_client/domain/repository/documents.repository.dart'
     as _i8;
 import 'package:portfolio_manager_client/foundation/client/dio.client.dart'
@@ -46,6 +48,8 @@ extension GetItInjectableX on _i1.GetIt {
             documentListEndpoint: gh<_i4.DocumentListEndpoint>()));
     gh.singleton<_i8.DocumentsRepository>(() => _i9.DocumentsRepositoryImpl(
         documentListRemoteDataSource: gh<_i6.DocumentListRemoteDataSource>()));
+    gh.singleton<_i10.DocumentManager>(
+        () => _i10.DocumentManager(gh<_i8.DocumentsRepository>()));
     return this;
   }
 }

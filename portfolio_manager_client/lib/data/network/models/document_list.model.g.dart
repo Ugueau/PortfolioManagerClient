@@ -8,10 +8,12 @@ part of 'document_list.model.dart';
 
 DocumentListModel _$DocumentListModelFromJson(Map<String, dynamic> json) =>
     DocumentListModel(
-      totalCount: json['total_count'] as int?,
+      data: (json['data'] as List<dynamic>)
+          .map((e) => DocumentModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$DocumentListModelToJson(DocumentListModel instance) =>
     <String, dynamic>{
-      'total_count': instance.totalCount,
+      'data': instance.data.map((e) => e.toJson()).toList(),
     };

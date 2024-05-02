@@ -15,10 +15,10 @@ abstract class DocumentListEndpoint {
   ///
   @factoryMethod
   factory DocumentListEndpoint(DioClient dio) {
-    return _DocumentListEndpoint(dio);
+    return _DocumentListEndpoint(dio.dio);
   }
 
   ///
   @GET('/documents')
-  Future<DocumentListModel> getDocuments({@Query('limit') int limit = 20});
+  Future<DocumentListModel> getDocuments({@Query('limit') int limit = 20, @Query('offset') int offset = 0});
 }

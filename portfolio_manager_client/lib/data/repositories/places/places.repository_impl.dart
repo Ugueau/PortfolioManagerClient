@@ -12,8 +12,8 @@ class DocumentsRepositoryImpl implements DocumentsRepository {
       : _documentListRemoteDataSource = documentListRemoteDataSource;
 
   @override
-  Future<DocumentListEntity> getDocuments() async {
-    final DocumentListModel model = await _documentListRemoteDataSource.getDocuments();
+  Future<DocumentListEntity> getDocuments({int offset = 0}) async {
+    final DocumentListModel model = await _documentListRemoteDataSource.getDocuments(offset: offset);
     return model.toEntity;
   }
 

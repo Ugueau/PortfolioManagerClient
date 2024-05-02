@@ -10,7 +10,7 @@ class DocumentListRemoteDataSourceImpl implements DocumentListRemoteDataSource {
   DocumentListRemoteDataSourceImpl({required DocumentListEndpoint documentListEndpoint})
       : _documentListEndpoint = documentListEndpoint;
   @override
-  Future<DocumentListModel> getDocuments() {
+  Future<DocumentListModel> getDocuments({int offset = 0}) {
     return _documentListEndpoint.getDocuments();
   }
 }

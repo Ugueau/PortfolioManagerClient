@@ -11,7 +11,7 @@ class HeaderInterceptor {
   }
 
   void _init() {
-    _dioClient.interceptors.add(InterceptorsWrapper(
+    _dioClient.dio.interceptors.add(InterceptorsWrapper(
       onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
         options.headers.addAll(
           <String, dynamic>{'Content-Type': 'application/json'},

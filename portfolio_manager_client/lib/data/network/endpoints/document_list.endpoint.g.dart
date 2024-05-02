@@ -19,9 +19,15 @@ class _DocumentListEndpoint implements DocumentListEndpoint {
   String? baseUrl;
 
   @override
-  Future<DocumentListModel> getDocuments({int limit = 20}) async {
+  Future<DocumentListModel> getDocuments({
+    int limit = 20,
+    int offset = 0,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'limit': limit};
+    final queryParameters = <String, dynamic>{
+      r'limit': limit,
+      r'offset': offset,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio

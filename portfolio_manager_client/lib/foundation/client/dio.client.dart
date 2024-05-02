@@ -1,23 +1,19 @@
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 import 'package:injectable/injectable.dart';
 
 /// Dio client class to make http requests
 @singleton
-class DioClient extends DioForNative {
-  ///
-  /// Get default [BaseOptions]
-  ///
-  static BaseOptions get _baseOptions => BaseOptions()
-    ..followRedirects = true
-    ..baseUrl =
-        'http://localhost:3000'
-    ..connectTimeout = const Duration(seconds: 30)
-    ..maxRedirects = 5
-    ..contentType = Headers.formUrlEncodedContentType;
+class DioClient {
+  final Dio _dio = Dio();
 
-  ///
-  /// Constructor
-  ///
-  DioClient() : super(_baseOptions);
+  DioClient() {
+    BaseOptions options = BaseOptions(
+      baseUrl: 'http://localhost:3000',
+      connectTimeout: const Duration(seconds: 5),
+      contentType: Headers.formUrlEncodedContentType,
+    );
+    _dio.options = options;
+  }
+
+  Dio get dio => _dio;
 }
