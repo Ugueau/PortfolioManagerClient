@@ -5,20 +5,21 @@ part 'document.model.g.dart';
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class DocumentModel {
-  final String? img_path;
   final String? title;
   final String? descr;
+  final String? link;
   final String? creation_date;
   final int id;
-  final String category_titles;
+  final List<String> categories;
+  final List<String> images;
 
 
-  const DocumentModel(this.img_path, this.title, this.descr, this.creation_date, this.id, this.category_titles);
+  const DocumentModel(this.title, this.descr, this.link, this.creation_date, this.id, this.categories, this.images);
 
   factory DocumentModel.fromJson(Map<String, dynamic> json) =>
       _$DocumentModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$DocumentModelToJson(this);
 
-  DocumentEntity get toEntity => DocumentEntity(imgPath: "http://localhost:3000/image/$img_path", title: title, descr: descr, creationDate: creation_date, id: id, categoryTitles: category_titles);
+  DocumentEntity get toEntity => DocumentEntity(title: title, descr: descr, link:link, creationDate: creation_date, id: id, categories: categories, images : images);
 }

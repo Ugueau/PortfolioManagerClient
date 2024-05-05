@@ -52,7 +52,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     },
                     child: GridElementCard(
                       imagePath:
-                      "${state.documents?.data[index].imgPath}",
+                      "${state.documents?.data[index].images?[0]}",
                       title: "${state.documents?.data[index].title}",
                       date:
                       "${state.documents?.data[index].creationDate}",
