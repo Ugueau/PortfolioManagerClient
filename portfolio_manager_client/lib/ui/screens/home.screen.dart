@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_manager_client/ui/screens/home.state.dart';
 import 'package:portfolio_manager_client/ui/screens/home.viewmodel.dart';
+import 'package:portfolio_manager_client/ui/screens/manage_project.screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:open_app_file/open_app_file.dart';
 
@@ -24,6 +25,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Portfolio"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12.0),
+            child: IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const ManageProjectPage()));
+              },
+            ),
+          ),
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +51,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     const CircleAvatar(
                       radius: 50,
                       backgroundImage: AssetImage(
-                          "profile_picture.jpg"), // Replace with your image URL
+                          "assets/profile_picture.jpg"), // Replace with your image URL
                     ),
                     const SizedBox(height: 16),
                     ElevatedButton.icon(
@@ -64,29 +77,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        "Téléphone : 06 21 69 55 63",
+                        "Contact : 06 21 69 55 63",
                         style: TextStyle(fontSize: 16),
                       ),
                       const SizedBox(height: 5),
-                      Row(
-                        children: [
-                          const Text(
-                            "Email : ",
-                            style: TextStyle(fontSize: 16),
+                      InkWell(
+                        onTap: () {
+                          _launchEmail("hugomillot2003@gmail.com");
+                        },
+                        child: const Text(
+                          "hugomillot2003@gmail.com",
+                          style: TextStyle(
+                            fontSize: 16,
+                            color:
+                                Colors.blue, // Change color for link appearance
                           ),
-                          InkWell(
-                            onTap: () {
-                              _launchEmail("hugomillot2003@gmail.com");
-                            },
-                            child: const Text(
-                              "hugomillot2003@gmail.com",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.blue, // Change color for link appearance
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                       const SizedBox(height: 20),
                       Row(
@@ -95,27 +101,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           Row(
                             children: [
                               IconButton(
-                                onPressed: () {
-                                  _launchURL("https://github.com/Ugueau");
-                                },
-                                icon: Image.asset(
-                                  "assets/github-mark.png",
-                                  width: 30, // Adjust the width to fit your needs
-                                  height: 30, // Adjust the height to fit your needs
-                                  fit: BoxFit.cover,
-                                )
-                              ),
+                                  onPressed: () {
+                                    _launchURL("https://github.com/Ugueau");
+                                  },
+                                  icon: Image.asset(
+                                    "assets/github-mark.png",
+                                    width: 30,
+                                    // Adjust the width to fit your needs
+                                    height: 30,
+                                    // Adjust the height to fit your needs
+                                    fit: BoxFit.cover,
+                                  )),
                               IconButton(
-                                onPressed: () {
-                                  _launchURL("https://linkedin.com/in/hugomillot");
-                                },
-                                icon: Image.asset(
-                                  "assets/linkedin.jpg",
-                                  width: 30, // Adjust the width to fit your needs
-                                  height: 30, // Adjust the height to fit your needs
-                                  fit: BoxFit.cover,
-                                )
-                              ),
+                                  onPressed: () {
+                                    _launchURL(
+                                        "https://linkedin.com/in/hugomillot");
+                                  },
+                                  icon: Image.asset(
+                                    "assets/linkedin.jpg",
+                                    width: 30,
+                                    // Adjust the width to fit your needs
+                                    height: 30,
+                                    // Adjust the height to fit your needs
+                                    fit: BoxFit.cover,
+                                  )),
                             ],
                           ),
                         ],
@@ -147,11 +156,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               DetailedPage(state.documents!.data[index])));
                     },
                     child: GridElementCard(
-                      imagePath:
-                      "${state.documents?.data[index].images?[0]}",
+                      imagePath: "${state.documents?.data[index].images?[0]}",
                       title: "${state.documents?.data[index].title}",
-                      date:
-                      "${state.documents?.data[index].creationDate}",
+                      date: "${state.documents?.data[index].creationDate}",
                     ),
                   );
                 },

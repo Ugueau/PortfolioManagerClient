@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -45,27 +44,27 @@ class _DetailedPageState extends ConsumerState<DetailedPage> {
             children: [
               Text(
                 state.document?.title ?? "",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 24.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Text(
                 "Date: ${state.document?.creationDate ?? ""}",
-                style: TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 16.0),
               ),
-              SizedBox(height: 8.0),
+              const SizedBox(height: 8.0),
               Align(
                 alignment: Alignment.topRight,
                 child: ElevatedButton(
                   onPressed: () {
                     _launchURL(state.document?.link ?? "");
                   },
-                  child: Text("About Project"),
+                  child: const Text("En savoir plus"),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Wrap(
                 spacing: 8.0,
                 children: state.document?.categories
@@ -89,7 +88,7 @@ class _DetailedPageState extends ConsumerState<DetailedPage> {
                     .toList() ??
                     [],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -123,7 +122,7 @@ class _DetailedPageState extends ConsumerState<DetailedPage> {
                         ),
                     ],
                   ),
-                  SizedBox(width: 16.0),
+                  const SizedBox(width: 16.0),
                   Expanded(
                     child: MarkdownBody(
                       data: state.document?.descr ?? "",
