@@ -57,6 +57,7 @@ dependencies:
   connectivity_plus: ^6.0.3
   flutter_markdown: ^0.7.1
   url_launcher: ^6.2.6
+  open_app_file: ^4.0.2
 
 dev_dependencies:
   flutter_test:
@@ -103,6 +104,10 @@ flutter:
   assets:
      - assets\404-not-found.gif
      - assets\portfolio_logo.jpg
+     - assets\profile_picture.jpg
+     - assets\CV.pdf
+     - assets\linkedin.jpg
+     - assets\github-mark.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
