@@ -8,7 +8,7 @@ class DioClient {
 
   DioClient() {
     BaseOptions options = BaseOptions(
-      baseUrl: 'http://localhost:3000',
+      baseUrl: 'http://86.235.199.160:3000/',
       connectTimeout: const Duration(seconds: 5),
       contentType: Headers.formUrlEncodedContentType,
     );

@@ -25,18 +25,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Portfolio"),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 12.0),
-            child: IconButton(
-              icon: const Icon(Icons.settings),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const ManageProjectPage()));
-              },
-            ),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.only(right: 12.0),
+        //     child: IconButton(
+        //       icon: const Icon(Icons.settings),
+        //       onPressed: () {
+        //         Navigator.of(context).push(MaterialPageRoute(
+        //             builder: (context) => const ManageProjectPage()));
+        //       },
+        //     ),
+        //   ),
+        // ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -165,13 +165,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: ref.watch(homeProvider.notifier).fetchDocuments,
-              child: const Text("More"),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: ElevatedButton(
+          //     onPressed: ref.watch(homeProvider.notifier).fetchDocuments,
+          //     child: const Text("More"),
+          //   ),
+          // ),
         ],
       ),
     );
